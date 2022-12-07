@@ -15,20 +15,6 @@ $errors= array('album'=>'', 'artist'=>'', 'band'=>'', 'rating'=>'');
             $newartist=$_POST['artist'];
             $newband=$_POST['band'];
             $newrating=$_POST['rating'];
-            // include("conn.php");
-            // if($conn){
-            //     echo"Hurray";
-            // }else{
-            //     echo"Oooops!";
-            // }
-            // echo "id = ". $newid;
-            // $query="UPDATE `highlife` SET `song_name` = '$newalbum', `artist` = '$newartist', `band_id` = '$newband', `rating` = '$newrating' WHERE id=$newid";
-            // if(!$query){
-            // $error = "error: ". mysqli_error($conn);
-            // $error.= "error: ". $newid;
-            // }else{
-            //     echo "Updated successfully";
-            // }
         }
     }
 ?>

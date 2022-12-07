@@ -1,3 +1,25 @@
+<?php
+    $album=$artist=$band=$rating=$id=$error='';
+    $errors= array('album'=>'', 'artist'=>'', 'band'=>'', 'rating'=>'');
+    if (isset($_POST['update'])){
+        // $this->load->view('include/formerror');
+        If (array_filter($errors)){
+            echo '<center>';
+            echo "<div class='hero-error'>Error in the form</div>";
+            echo '</center>';
+        }
+            global $id;
+            echo "hmmmmn".$id;
+            $id=$_POST['id'];
+            $album=$_POST['album'];
+            $artist=$_POST['artist'];
+            $band=$_POST['band'];
+            $rating=$_POST['rating'];
+            print_r($this->input->post());
+
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,37 +29,9 @@
 </head>
 <body>
     <?php
-    $album=$artist=$band=$rating=$id=$error='';
-    // $popArray=array();
-    $errors= array('album'=>'', 'artist'=>'', 'band'=>'', 'rating'=>'');
-    $this->load->view('include/formerror');
-    if (isset($_POST['update'])){
-        If (array_filter($errors)){
-            echo '<center>';
-            echo "<div class='hero-error'>Error in the form</div>";
-            echo '</center>';
-        }
-
-            global $id;
-            echo "hmmmmn".$id;
-            $newid=$_POST['id'];
-            $newalbum=$_POST['album'];
-            $newartist=$_POST['artist'];
-            $newband=$_POST['band'];
-            $newrating=$_POST['rating'];
-            echo $newid;
-            echo $newalbum;
-            echo $newartist;
-            echo $newband;
-            echo $newrating;
-    }
-
-    
     $this->load->view('include/nav');
 
     $this->load->view('include/updatecontent');
-    print_r($popArray);
-    
         foreach ($popArray as $val => $row){
             $album= $row['song_name'];
             $artist= $row['artist'];

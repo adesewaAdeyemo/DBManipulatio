@@ -13,11 +13,11 @@ echo '<nav style="background-color:rgb(32, 157, 157);">';
 //     printf("% 60s", $e);
 // echo '</pre>';
 ?>
-<a href="./">MASTER RECORD</a>
-<a href="./edit">EDIT RECORD</a>
-<a href="./add">ADD TO RECORD</a>
-<a href="./update">UPDATE RECORD</a>
-<a href="./delete">DELETE RECORD</a>
+<a href="<?php echo base_url()?>index.php/">MASTER RECORD</a>
+<a href="<?php echo base_url()?>index.php/record/edit">EDIT RECORD</a>
+<a href="<?php echo base_url()?>index.php/record/add">ADD TO RECORD</a>
+<a href="<?php echo base_url()?>index.php/record/update">UPDATE RECORD</a>
+<a href="<?php echo base_url()?>index.php/record/delete">DELETE RECORD</a>
 <?php
 echo '</nav>';
 ?>

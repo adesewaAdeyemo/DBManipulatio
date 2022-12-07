@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Record extends CI_Controller {
     public function __construct(){
         parent::__construct();
+        $this->load->helper('url');
         $this->load->model('record_model');
-        $this->load->model('record_model2');
-
+        // $postData = $this->input->post();
     }
 
 	public function index()
@@ -15,6 +15,8 @@ class Record extends CI_Controller {
 		$this->load->view('record/record_index', $data);
 
 	}
+
+
     public function update()
 	{   
         if(!empty($_POST['record_id'])){
@@ -25,12 +27,29 @@ class Record extends CI_Controller {
         }
         $this->load->view('record/update', $data);
         if (isset($_POST['update'])){
-            $this->load->view('record/update', $data);
-            $this->record_model->updaterecord();
+            // $this->record_model->updaterecord();
+            $postData = $this->input->post();
+            print_r($postData);
+			$album = $postData['album'];
+			$artist = $postData['artist'];
+			$band = $postData['band'];
+			$rating = $postData['rating'];
+			$id = $postData['id'];
+            $this->load->database();
+            $this->db;
+            $data = array(
+                'song_name' => $album,
+                'artist' => $artist,
+                'band_id' => $band,
+                'rating' => $rating,
+                'id' => $id
+            );
+            $query = $this->db->update('highlife', $data, array('id' => $id));
             echo "its a success";
             echo "<br>";
         }
     }
+
 
     public function add()
 	{
@@ -52,57 +71,30 @@ class Record extends CI_Controller {
 		$this->load->view('record/edit', $data);
 
         if (isset($_POST['edit'])){
-            $this->record_model->updaterecord();
+            // $this->record_model->updaterecord();
+            $postData = $this->input->post();
+            print_r($postData);
+			$album = $postData['album'];
+			$artist = $postData['artist'];
+			$band = $postData['band'];
+			$rating = $postData['rating'];
+			$id = $postData['id'];
+            $this->load->database();
+            $this->db;
+            $data = array(
+                'song_name' => $album,
+                'artist' => $artist,
+                'band_id' => $band,
+                'rating' => $rating,
+                'id' => $id
+            );
+            $query = $this->db->update('highlife', $data, array('id' => $id));
+            if($query){
+            // $content= "$id updated successfully";
+            // echo "<br>";
+            header("Location: ./");
+            }
         }
 	}
 }
 
-
-    // public function update()
-	// {   
-    //     if(!empty($_POST['record_id'])){
-    //     $data['popArray'] = $this->record_model->runup();
-    //     }
-    //     $this->load->view('record/update', $data);
-    //     if (isset($_POST['update'])){
-    //         $this->record_model->updaterecord();
-    //         echo "its a success";
-    //         echo "<br>";
-    //         echo "new id". $newid;
-                // // $postData = $this->input->post();
-                // $postData = array();
-                // $newid=$_POST['id'];
-                // // $postData['newalbum']=$_POST['album'];
-                // // $postData['newartist']=$_POST['artist'];
-                // // $postData['newband']=$_POST['band'];
-                // // $postData['newrating']=$_POST['rating'];
-                // $newalbum=$_POST['album'];
-                // $newartist=$_POST['artist'];
-                // $newband=$_POST['band'];
-                // $newrating=$_POST['rating'];
-                // $newid=$_POST['id'];
-    
-                // // $this->record_model->updaterecord($postArray);
-                // echo "its a success";
-                // echo "<br>";
-                //     // echo "new id". $newid;
-                    
-    
-    
-                //     $postData = array(
-                //         'song_name' => $newalbum,
-                //         'artist' => $newartist,
-                //         'band_id' => $newband,
-                //         'rating' => $newrating,
-                //         'id' => $newid
-                //     );
-                //     // echo "I am a model";
-                //     $this->load->database();
-                //     $this->db;    
-                //     $query = $this->db->set('highlife', $postdata, array('id' => $newid));
-    
-    //     }
-    // }
-
-
-// }
